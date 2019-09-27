@@ -11,6 +11,7 @@ class Cromossomo():
         self.tamanho = tamanho
         self.valor = ""
         self.avaliacao = -1
+        self.avaliacaoLista = []
         self.valorX = 0
         self.valorY = 0
         self.limiteMaximo = limiteMaximo
@@ -77,9 +78,9 @@ class Cromossomo():
 
         return inf + (sup - inf)/(2**self.tamanho - 1)*int(self.valor, 2)
 
-    def avaliar(self):
+    def avaliar(self, populacao):
 
-        self.valorX = random.randrange(self.limiteMinimo, self.limiteMaximo)
+        self.valorX = 
         self.valorY = random.randrange(self.limiteMinimo, self.limiteMaximo)
 
         x = self.valorX

@@ -11,7 +11,7 @@ class GABasico():
                 limiteBits, chanceCrossover, chanceMutacao, minimizacao,
                 roleta, torneio):
 
-        self.populacao = []
+        self.populacao = [][]
         self.tam_populacao = tamanho_populacao
         self.geracoes = geracoes
         self.soma_avaliacoes = 0
@@ -26,20 +26,28 @@ class GABasico():
 
     def inicializar_populacao(self):
 
-        for i in range(self.tam_populacao):
-            self.populacao.append(Cromossomo(self.limiteBits, self.limiteMaximo, self.limiteMinimo))
-        for cromossomo in self.populacao: cromossomo.inicializar()
+    for n_lin in range(self.tam_populacao):
+        linha = [] # cria uma linha para a matriz
+        for n_col in range(2):
+            linha.append(Cromossomo(self.limiteBits, self.limiteMaximo, self.limiteMinimo))
+        self.populacao.append(linha)
+
+        #for cromossomo in self.populacao: cromossomo.inicializar()
 
     def avaliar_populacao(self):
-
+        fs = [cromossomo.avaliar() for cromossomo in self.populacao]
+        
+        """
         self.soma_avaliacoes = 0
         for cromossomo in self.populacao:
             # Se for maximização
             if self.minimizacao == 0:
-                self.soma_avaliacoes += cromossomo.avaliar()
+                #self.soma_avaliacoes += cromossom
+
             # Se for minimização
             else:
-                self.soma_avaliacoes -= cromossomo.avaliar()
+                self.soma_avaliacoes -= cromossomo.avaliacao
+        """
         
 
     def roleta(self):
