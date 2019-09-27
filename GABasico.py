@@ -97,8 +97,7 @@ class GABasico():
             ordenado = sorted(self.populacao, key = lambda x: x.avaliacao, reverse = True)
         else:
             ordenado = sorted(self.populacao, key = lambda x: x.avaliacao, reverse = False)
-        valorFitness = self.soma_avaliacoes
-        best_outputs.append(valorFitness)
+        valorFitness = 0
         for i in range(self.geracoes):
             pop1 = self.populacao[0]
             pop2 = self.populacao[1]
@@ -107,6 +106,9 @@ class GABasico():
             pop5 = self.populacao[4]
             print("5 cromossomos da geração %d:\n%s\n%s\n%s\n%s\n%s\n\n" % (i + 1, pop1, pop2, pop3, pop4, pop5), end="", flush = True)
             
+            valorFitness = self.soma_avaliacoes
+            best_outputs.append(valorFitness)
+
             top1 = ordenado[0]
             print("Melhor cromossomo da geração %d:\n%s\n\n" % (i + 1, top1), end="", flush = True)
             print("Fitness da geração %d:\n%s\n\n" % (i + 1, valorFitness), end="", flush = True)
@@ -119,8 +121,6 @@ class GABasico():
                 ordenado = sorted(self.populacao, key = lambda x: x.avaliacao, reverse = True)
             else:
                 ordenado = sorted(self.populacao, key = lambda x: x.avaliacao, reverse = False)
-            valorFitness = self.soma_avaliacoes
-            best_outputs.append(valorFitness)
         matplotlib.pyplot.plot(best_outputs)
         matplotlib.pyplot.xlabel("Geração")
         matplotlib.pyplot.ylabel("Fitness")
