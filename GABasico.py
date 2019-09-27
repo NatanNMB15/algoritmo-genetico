@@ -1,6 +1,4 @@
 ﻿"""
-    Autor: Natan Barbosa
-
     Código modificado do código base: https://github.com/itsmeale/algoritmos-geneticos/tree/master/ga-basico
 """
 
