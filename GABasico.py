@@ -12,9 +12,9 @@ class GABasico():
                 roleta, torneio):
 
         self.populacao = []
+        self.avaliacoes = []
         self.tam_populacao = tamanho_populacao
         self.geracoes = geracoes
-        self.soma_avaliacoes = 0
         self.limiteMinimo = limiteMinimo
         self.limiteMaximo = limiteMaximo
         self.limiteBits = limiteBits
@@ -30,14 +30,14 @@ class GABasico():
         for cromossomo in self.populacao: cromossomo.inicializar()
 
     def avaliar_populacao(self):
-        self.soma_avaliacoes = 0
-        for cromossomo in self.populacao:
+        for i in range(self.tam_populacao):
+            cromossomo = self.populacao[i]
             # Se for maximização
             if self.minimizacao == 0:
-                self.soma_avaliacoes += cromossomo.avaliar()
+                self.avaliacoes.append(cromossomo.avaliar())
             # Se for minimização
             else:
-                self.soma_avaliacoes -= cromossomo.avaliar()
+                self.avaliacoes.append(cromossomo.avaliar())
         
 
     def roleta(self):

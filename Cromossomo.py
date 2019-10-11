@@ -11,6 +11,7 @@ class Cromossomo():
         self.tamanho = tamanho
         self.valorX = ""
         self.valorY = ""
+        self.avaliacao = 0
         self.limiteMaximo = limiteMaximo
         self.limiteMinimo = limiteMinimo
 
@@ -37,12 +38,11 @@ class Cromossomo():
         return format(x, 'b').zfill(n)
 
     def inicializar(self):
-        for i in range(self.tamanho):
-            for j in range(2):
-                numX = random.randrange(self.limiteMinimo, self.limiteMaximo, 2)
-                self.valorX = self.get_bin(numX, self.tamanho)
-                numY = random.randrange(self.limiteMinimo, self.limiteMaximo, 2)
-                self.valorY = self.get_bin(numY, self.tamanho)
+        numX = random.randrange(self.limiteMinimo, self.limiteMaximo, 2)
+        novo_valorX = self.get_bin(numX, self.tamanho)
+        numY = random.randrange(self.limiteMinimo, self.limiteMaximo, 2)
+        novo_valorY = self.get_bin(numY, self.tamanho)
+        self.set_valor(novo_valorX, novo_valorY)
 
     # TODO Valor minímo e máximo
     def crossover(self, outro_cromossomo, chance_crossover):
@@ -95,8 +95,6 @@ class Cromossomo():
         self.set_valor(novo_valorX, novo_valorY)
 
     def avaliar(self):
-        print("Valor X %d", self.valorX)
-        print("Valor Y %d", self.valorY)
         x = int(self.valorX, 2)
         y = int(self.valorY, 2)
 
