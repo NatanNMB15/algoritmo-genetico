@@ -84,15 +84,21 @@ class Cromossomo():
                 inicio = self.valorX[0:i]
                 fim = self.valorX[i+1:self.tamanho]
                 aux = self.valorX[i]
-                novo_valorX = inicio+aux+fim
+                novo_valorX = inicio
+                novo_valorX += aux
+                novo_valorX += fim
+
         for i in range(self.tamanho):
             if random.random() < chance_mutacao:
                 inicio = self.valorY[0:i]
                 fim = self.valorY[i+1:self.tamanho]
                 aux = self.valorY[i]
-                novo_valorY = inicio+aux+fim
-        
-        self.set_valor(novo_valorX, novo_valorY)
+                novo_valorY = inicio
+                novo_valorY += aux
+                novo_valorY += fim
+
+        if novo_valorX and novo_valorY:
+            self.set_valor(novo_valorX, novo_valorY)
 
     def avaliar(self):
         x = int(self.valorX, 2)
@@ -103,4 +109,3 @@ class Cromossomo():
 
     def __repr__(self):
         return "cromossomo: X[%s] Y[%s] fitness[%.2f] valor X[%d] valor Y[%d]" % (self.valorX, self.valorY, self.avaliacao, int(self.valorX, 2), int(self.valorY, 2))
-        
